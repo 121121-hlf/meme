@@ -41,3 +41,6 @@ for holding in holdings:
         continue
     start_holding_at = holding["start_holding_at"] - 8 * 60 * 60
     print("token_address:", token_address, "start_holding_at:", start_holding_at)
+    start_time = start_holding_at - 60*5
+    end_time = start_holding_at
+    print("start_time:", start_time, "end_time:", end_time)
