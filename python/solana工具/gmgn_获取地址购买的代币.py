@@ -44,3 +44,7 @@ for holding in holdings:
     start_time = start_holding_at - 60*5
     end_time = start_holding_at
     print("start_time:", start_time, "end_time:", end_time)
+#     转为  年月日时分秒 格式
+    start_time_str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(start_time))
+    end_time_str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(end_time))
+    print("start_time_str:", start_time_str, "end_time_str:", end_time_str)
