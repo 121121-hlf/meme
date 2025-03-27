@@ -24,16 +24,16 @@ async def main():
         print(tweet.id)
     #     print(tweet.created_at_datetime)
     #     print(tweet.text)
-        print("==================")
+    print("==================")
     while True:
-        time.sleep(1)
+        time.sleep(2)
         more_tweets = await tweets.next()  # Retrieve more tweets
         print("大小", len(more_tweets))
         for tweet in more_tweets:
             print(tweet.id)
         #     print(tweet.created_at_datetime)
         #     print(tweet.text)
-            print("==================")
+        print("==================")
         if len(more_tweets) == 0:
             break
 

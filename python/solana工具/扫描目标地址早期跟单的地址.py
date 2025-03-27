@@ -3,6 +3,7 @@ import time
 
 from DrissionPage import Chromium
 import requests
+
 address = "DNfuF1L62WWyW3pNakVkyGGFzVVhj4Yr52jSmdTyeBHm"
 headers = {
     "accept": "application/json, text/plain, */*",
@@ -24,12 +25,19 @@ headers = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
 }
 
-
 tab = Chromium().latest_tab
 tab.listen.start(
     f'api/v1/wallet_holdings/sol/{address}')  # 开始监听，指定获取包含该文本的数据包
 
 tab.get(f"https://gmgn.ai/sol/address/{address}")
 res = tab.listen.wait()  # 等待并获取一个数据包
-print(res.response.body)
+data_json = res.response.body
+holdings = data_json["data"]["holdings"]
+for holding in holdings:
+    token_address = holding["token"]["token_address"]
 
+    if holding["buy_30d"] == 0:
+        # print("buy_30d is 0, skip", token_address)
+        continue
+    start_holding_at = holding["start_holding_at"] - 8 * 60 * 60
+    print("token_address:", token_address, "start_holding_at:", start_holding_at)
