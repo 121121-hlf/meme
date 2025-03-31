@@ -16,9 +16,9 @@ async def main():
         auth_info_1=USERNAME,
         auth_info_2=EMAIL,
         password=PASSWORD,
-        cookies_file='cookies.json'
+        # cookies_file='cookies.json'
     )
-    tweets = await client.search_tweet('4TBi66vi32S7J8X1A6eWfaLHYmUXu7CStcEmsJQdpump', 'Latest')
+    tweets = await client.search_tweet('94TrQt5BKxqeTgNnbsEf9zjvKju6tyuWdS6bndLApump', 'Latest')
     print("第一次大小", len(tweets))
     for tweet in tweets:
         print(tweet.id)
